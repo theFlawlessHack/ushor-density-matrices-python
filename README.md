@@ -28,7 +28,7 @@ before an election would have representation there afterward.
 
 ## Getting Started
 
-#### Git clone
+### Git clone
 Through command prompt (Windows) or terminal (Mac), navigate to the folder you want to hold the project folder.<br>
 Once there git clone using either the ssh or http method<br>
 <b>SSH method</b><br>
@@ -36,7 +36,7 @@ Once there git clone using either the ssh or http method<br>
 <br><br><b>HTTP method</b><br>
 `git clone https://github.com/theFlawlessHack/bulls-cows-cpp-console-game.git`
 
-#### Run Python Script
+### Run Python Script
 Through command prompt (Windows) or terminal (Mac), navigate to the project folder which you just cloned.<br>
 Once there, run the run.py file using python<br>
 <br>
@@ -44,7 +44,7 @@ type
 `python run.py` 
 in your terminal or command line in the project folder.
 
-#### Workfile
+### Workfile
 If the run was successful then you should now see a workfile in the current project directory.<br>
 In this workfile you can analyze the results.
 
