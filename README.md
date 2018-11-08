@@ -33,7 +33,7 @@ Through command prompt (Windows) or terminal (Mac), navigate to the folder you w
 Once there git clone using either the ssh or http method<br>
 <b>SSH method</b><br>
 `git clone git@github.com:theFlawlessHack/bulls-cows-cpp-console-game.git`
-<br><b>HTTP method</b>
+<br><br><b>HTTP method</b><br>
 `git clone https://github.com/theFlawlessHack/bulls-cows-cpp-console-game.git`
 
 #### Run Python Script
