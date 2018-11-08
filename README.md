@@ -46,5 +46,8 @@ in your terminal or command line in the project folder.
 
 ### Workfile
 If the run was successful then you should now see a workfile in the current project directory.<br>
-In this workfile you can analyze the results.
+In this workfile you can analyze the results.<br><br>
 
+Sample workfile
+<br>
+<img src="sample_images/workfile.png" />
