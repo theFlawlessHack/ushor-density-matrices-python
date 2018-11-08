@@ -1,3 +1,3 @@
-import histogram_002
+import histogram
 
-histogram_002.z(1)
+histogram.z(1)
