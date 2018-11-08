@@ -64,20 +64,20 @@ def z(n):    #
         sum_average_transition_matrix = sum(sum(average_transition_matrix))
 
         if 1 == 1:
-            fileout.write('index election = ', index_election)
+            fileout.write('index election = {}'.format(index_election))
             fileout.write('transition_matrix = ')
-            fileout.write(np.matrix.round(transition_matrix_temp*1000)/1000)
+            fileout.write(str(np.matrix.round(transition_matrix_temp*1000)/1000))
             fileout.write('sum of sum of transition matrix = ')
-            fileout.write(round(sum_transition_matrix*1000)/1000)
-            fileout.write('index_election = ', index_election, 'average transition_matrix = ')
-            fileout.write(np.matrix.round(average_transition_matrix*100)/100)
+            fileout.write(str(round(sum_transition_matrix*1000)/1000))
+            fileout.write('index_election = {} average transition_matrix = '.format(index_election))
+            fileout.write(str(np.matrix.round(average_transition_matrix*100)/100))
 
 
         if abs(sum_transition_matrix - 1) > 0.00001:
-            fileout.write(index_election, 'not normalized correctly 11')
+            fileout.write('{} not normalized correctly 11'.format(index_election))
             return
         elif abs(sum_average_transition_matrix - 1) > 0.00001:
-            fileout.write(index_election, 'not normalized correctly 22')
+            fileout.write('{} not normalized correctly 22'.format(index_election))
             return
         elif index_election == 23:
             tommy = (1 == 2)
@@ -109,17 +109,17 @@ def z(n):    #
     fileout.write('TAKE I ')
     fileout.write(' ')
     fileout.write('Signal')
-    fileout.write(np.matrix.round(signal*1000)/1000)
+    fileout.write(str(np.matrix.round(signal*1000)/1000))
     fileout.write(' ')
     conf_low = signal - 3.496*noise/np.sqrt(52)
     fileout.write('99.9% conf_low @ 50 samples  =')
-    fileout.write(np.round(conf_low*1000)/1000)
+    fileout.write(str(np.round(conf_low*1000)/1000))
     fileout.write(' ')
     fileout.write('Entropy  =')
-    fileout.write(np.round(entropy_master*100)/100)
+    fileout.write(str(np.round(entropy_master*100)/100))
     fileout.write(' ')
     fileout.write('Total Entropy  =')
-    fileout.write(np.round(np.sum(np.sum(entropy_master))*1000)/1000)
+    fileout.write(str(np.round(np.sum(np.sum(entropy_master))*1000)/1000))
     
 
     matrix_temp = np.zeros(shape=(NUMBER_STABLE_STATES, NUMBER_STABLE_STATES))
@@ -142,7 +142,7 @@ def z(n):    #
     fileout.write(' ')
     conf_low = signal - 3.496*noise/np.sqrt(52)
     fileout.write('99.9% conf_low @ 50 samples  =')
-    fileout.write(np.round(conf_low*1000)/1000)
+    fileout.write(str(np.round(conf_low*1000)/1000))
 
     signal, noise = chunk2(matrix_temp, T_master)
     fileout.write(' ')
@@ -150,11 +150,11 @@ def z(n):    #
     fileout.write('TAKE III ')
     fileout.write(' ')
     fileout.write('Signal')
-    fileout.write(np.matrix.round(signal*1000)/1000)
+    fileout.write(str(np.matrix.round(signal*1000)/1000))
     fileout.write(' ')
     conf_low = signal - 3.496*noise/np.sqrt(52)
     fileout.write('99.9% conf_low @ 50 samples  =')
-    fileout.write(np.round(conf_low*1000)/1000)
+    fileout.write(str(np.round(conf_low*1000)/1000))
 
     signal, noise = chunk3(matrix_temp, T_master)
     fileout.write(' ')
@@ -162,11 +162,11 @@ def z(n):    #
     fileout.write('TAKE IV ')
     fileout.write(' ')
     fileout.write('Signal')
-    fileout.write(np.matrix.round(signal*1000)/1000)
+    fileout.write(str(np.matrix.round(signal*1000)/1000))
     fileout.write(' ')
     conf_low = signal - 3.496*noise/np.sqrt(52)
     fileout.write('99.9% conf_low @ 50 samples  =')
-    fileout.write(np.round(conf_low*1000)/1000)
+    fileout.write(str(np.round(conf_low*1000)/1000))
     
 
 def calculateMinimalPoliticalSignificance(HISTORICAL_RECORD):
@@ -450,7 +450,7 @@ def buildTransitionMatrixFromHistoricalData(HISTORICAL_RECORD, index_record_i, i
     if 0 == 1:
         fileout.write(' ')
         fileout.write('Report from Build Transition Matrix From Historical Data:')
-        fileout.write('     index_i = ', index_record_i, ';  index_f = ', index_record_f)
+        fileout.write('index_i = {}; index_f = {}'.format(index_record_i, index_record_f))
 
     if (1 == 1):
         fileout.write('     percent_vote_i = ')
@@ -466,7 +466,7 @@ def buildTransitionMatrixFromHistoricalData(HISTORICAL_RECORD, index_record_i, i
 
     transition_matrix = buildOneSubTransitionMatrices(percent_vote_i, percent_vote_f, do_transition_if_generation, do_transition_if_continuation, do_transition_if_annihalation)
     fileout.write('     transition_matrix =')
-    fileout.write(np.matrix.round(transition_matrix*1000)/1000)
+    fileout.write(str(np.matrix.round(transition_matrix*1000)/1000))
     
     return transition_matrix
      
@@ -474,25 +474,25 @@ def buildTransitionMatrixFromHistoricalData(HISTORICAL_RECORD, index_record_i, i
     # before we continue, we need ro ascertain the correct renormalization based on generation possibilities
     transition_matrix = (transition_matrix_generation + transition_matrix_continuation + transition_matrix_annihalation)
     fileout.write('transition_matrix not necessarily normalized =')
-    fileout.write(np.matrix.round(transition_matrix*1000)/1000)
+    fileout.write(str(np.matrix.round(transition_matrix*1000)/1000))
     product_renormalization_generation = 1/(sum_prob_generation[6] + 1)
     transition_matrix = product_renormalization_generation*(transition_matrix_generation + transition_matrix_continuation + transition_matrix_annihalation)
     fileout.write('transition_matrix yes necessarily normalized =')
-    fileout.write(np.matrix.round(transition_matrix*1000)/1000)
+    fileout.write(str(np.matrix.round(transition_matrix*1000)/1000))
 
     sum_transition_matrix_annihalation = sum(sum(transition_matrix_annihalation))
     fileout.write('sum sum transition_matrix_annihalation =')
-    fileout.write(sum_transition_matrix_annihalation)
+    fileout.write(str(sum_transition_matrix_annihalation))
     fileout.write('transition_matrix_annihalation =')
-    fileout.write(np.matrix.round(transition_matrix_annihalation*1000)/1000)
+    fileout.write(str(np.matrix.round(transition_matrix_annihalation*1000)/1000))
     sum_transition_matrix_annihalation = sum(sum(transition_matrix_annihalation))
     fileout.write('sum sum transition_matrix_annihalation =')
-    fileout.write(sum_transition_matrix_annihalation)
+    fileout.write(str(sum_transition_matrix_annihalation))
     fileout.write('transition_matrix_annihalation =')
-    fileout.write(np.matrix.round(transition_matrix_annihalation*1000)/1000)
+    fileout.write(str(np.matrix.round(transition_matrix_annihalation*1000)/1000))
     sum_transition_matrix_annihalation = sum(sum(transition_matrix_annihalation))
     fileout.write('sum sum transition_matrix_annihalation =')
-    fileout.write(sum_transition_matrix_annihalation)
+    fileout.write(str(sum_transition_matrix_annihalation))
 
 
 
@@ -532,7 +532,7 @@ def buildFundamentalMatrices(HISTORICAL_RECORD, index_record_i, index_record_f):
                     fileout.write('    ')
                     fileout.write('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
                     fileout.write('Report from Build Fundamental Matrices; loop (_,_) of (_,_)')
-                    fileout.write('Test: (',HISTORICAL_RECORD[index_record_i + pointer_i][0],'->',HISTORICAL_RECORD[index_record_f + pointer_f][0],'): (',pointer_i,'>',pointer_f,'); (', HISTORICAL_RECORD[index_record_i + pointer_i][1], ',', HISTORICAL_RECORD[index_record_i + pointer_i][2], ') > (', HISTORICAL_RECORD[index_record_f + pointer_f][1], ',', HISTORICAL_RECORD[index_record_f + pointer_f][2], ')')
+                    fileout.write('Test: ({} -> {}): ({} > {}); ({},{}) > ({},{})'.format(HISTORICAL_RECORD[index_record_i + pointer_i][0],HISTORICAL_RECORD[index_record_f + pointer_f][0],pointer_i,pointer_f, HISTORICAL_RECORD[index_record_i + pointer_i][1], HISTORICAL_RECORD[index_record_i + pointer_i][2], HISTORICAL_RECORD[index_record_f + pointer_f][1], HISTORICAL_RECORD[index_record_f + pointer_f][2]))
 
             degeneracy_i = len(HISTORICAL_RECORD[index_record_i + pointer_i][3])
             degeneracy_f = len(HISTORICAL_RECORD[index_record_f + pointer_f][3])
