@@ -32,9 +32,9 @@ before an election would have representation there afterward.
 Through command prompt (Windows) or terminal (Mac), navigate to the folder you want to hold the project folder.<br>
 Once there git clone using either the ssh or http method<br>
 <b>SSH method</b><br>
-`git clone git@github.com:theFlawlessHack/bulls-cows-cpp-console-game.git`
+`git clone git@github.com:theFlawlessHack/ushor-density-matrices-python.git`
 <br><br><b>HTTP method</b><br>
-`git clone https://github.com/theFlawlessHack/bulls-cows-cpp-console-game.git`
+`git clone https://github.com/theFlawlessHack/ushor-density-matrices-python.git`
 
 ### Run Python Script
 Through command prompt (Windows) or terminal (Mac), navigate to the project folder which you just cloned.<br>
