@@ -138,7 +138,7 @@ def z(n):    #
     fileout.write('TAKE II ')
     fileout.write(' ')
     fileout.write('Signal')
-    fileout.write(np.matrix.round(signal*1000)/1000)
+    fileout.write(str(np.matrix.round(signal*1000)/1000))
     fileout.write(' ')
     conf_low = signal - 3.496*noise/np.sqrt(52)
     fileout.write('99.9% conf_low @ 50 samples  =')
@@ -339,7 +339,7 @@ def chunk2(matrix_temp, T_master):
     SNR_meanOfAggregate = np.zeros(shape=(rank_out, 1))
     for dex_1 in range(0, rank_out):
           for dex_2 in range(0, dex_1):
-              fileout.write(dex_1, dex_2)
+              fileout.write(str([dex_1, dex_2]))
               SNR_meanOfAggregate[dex_1] = SNR_meanOfAggregate[dex_1] + SNR_out[dex_1][dex_2]
           SNR_meanOfAggregate[dex_1] = SNR_meanOfAggregate[dex_1] + SNR_out[dex_1][dex_1]
           for dex_2 in range(0, dex_1):
@@ -566,8 +566,8 @@ def buildFundamentalMatrices(HISTORICAL_RECORD, index_record_i, index_record_f):
             #fileout.write('G CONDITIONS: >>', condition_if_g1, condition_if_g2, condition_if_g3)
             if (condition_if_g1 and (condition_if_g2 and condition_if_g3)):
                 do_transition_if_generation[pointer_i-1,pointer_f-1] = 1
-                fileout.write('Generation: (',HISTORICAL_RECORD[index_record_i + pointer_i][0],' ->',HISTORICAL_RECORD[index_record_f + pointer_f][0],'): (',pointer_i,'>',pointer_f,')', HISTORICAL_RECORD[index_record_f + pointer_f][1], '-s', HISTORICAL_RECORD[index_record_f + pointer_f][2], ' Party, is (re)-inaugerated into the historical record.')
-                fileout.write(pointer_i, pointer_f)
+                fileout.write('Generation: ({} -> {}): ({} > {}){}-s{} Party, (re)-inaugerated into the historical record'.format(HISTORICAL_RECORD[index_record_i + pointer_i][0],HISTORICAL_RECORD[index_record_f + pointer_f][0],pointer_i,pointer_f, HISTORICAL_RECORD[index_record_f + pointer_f][1], HISTORICAL_RECORD[index_record_f + pointer_f][2]))
+                fileout.write(str([pointer_i, pointer_f]))
                 # 
             else:
                 do_transition_if_generation[pointer_i-1,pointer_f-1] = 0
@@ -599,8 +599,7 @@ def buildFundamentalMatrices(HISTORICAL_RECORD, index_record_i, index_record_f):
             if ((condition_if_c1 or condition_if_c2) and condition_if_c3):
                 if ((HISTORICAL_RECORD[index_record_i + pointer_i][1] != 'None') and (HISTORICAL_RECORD[index_record_f + pointer_f][1] != 'None')):
                     do_transition_if_continuation[pointer_i-1,pointer_f-1] = 1
-                    fileout.write('Continuation: ( %d > %d): (%d > %d); (%d,%d) > (%d,%d)'.format(HISTORICAL_RECORD[index_record_i + pointer_i][0],HISTORICAL_RECORD[index_record_f + pointer_f][0],pointer_i,pointer_f, HISTORICAL_RECORD[index_record_i + pointer_i][1], HISTORICAL_RECORD[index_record_i + pointer_i][2][pointer_if_continuation[0]], HISTORICAL_RECORD[index_record_f + pointer_f][1], HISTORICAL_RECORD[index_record_f + pointer_f][2][pointer_if_continuation[1]]))
-                    # fileout.write('Continuation: (',HISTORICAL_RECORD[index_record_i + pointer_i][0],'>',HISTORICAL_RECORD[index_record_f + pointer_f][0],'): (',pointer_i,'>',pointer_f,'); (', HISTORICAL_RECORD[index_record_i + pointer_i][1], ',', HISTORICAL_RECORD[index_record_i + pointer_i][2][pointer_if_continuation[0]], ') > (', HISTORICAL_RECORD[index_record_f + pointer_f][1], ',', HISTORICAL_RECORD[index_record_f + pointer_f][2][pointer_if_continuation[1]], ')')
+                    fileout.write('Continuation: ({} > {}): ({} > {}); ({},{}) > ({},{})'.format(HISTORICAL_RECORD[index_record_i + pointer_i][0],HISTORICAL_RECORD[index_record_f + pointer_f][0],pointer_i,pointer_f, HISTORICAL_RECORD[index_record_i + pointer_i][1], HISTORICAL_RECORD[index_record_i + pointer_i][2][pointer_if_continuation[0]], HISTORICAL_RECORD[index_record_f + pointer_f][1], HISTORICAL_RECORD[index_record_f + pointer_f][2][pointer_if_continuation[1]]))
                     fileout.write(str([pointer_i, pointer_f]))
             else:
                 do_transition_if_continuation[pointer_i-1,pointer_f-1] = 0
@@ -642,8 +641,8 @@ def buildFundamentalMatrices(HISTORICAL_RECORD, index_record_i, index_record_f):
                 if (condition_if_a1 and (condition_if_a2 and condition_if_a3[deg_dex_i])):
                     do_transition_if_annihalation[pointer_i-1,pointer_f-1] = 1
                     # fileout the info regarding this event
-                    fileout.write('Annihalation: (',HISTORICAL_RECORD[index_record_i + pointer_i][0],'>',HISTORICAL_RECORD[index_record_f + pointer_f][0],'): (',pointer_i,'>',pointer_f,'); (', HISTORICAL_RECORD[index_record_i + pointer_i][1], ',', HISTORICAL_RECORD[index_record_i + pointer_i][2][deg_dex_i], ') > (', HISTORICAL_RECORD[index_record_f + pointer_f][1], ',', HISTORICAL_RECORD[index_record_f + pointer_f][2], ')')
-                    fileout.write(pointer_i, pointer_f)
+                    fileout.write('Annihalation: ({} > {}): ( > {}); ({},{}) > ({},{})'.format(HISTORICAL_RECORD[index_record_i + pointer_i][0],HISTORICAL_RECORD[index_record_f + pointer_f][0],pointer_i,pointer_f, HISTORICAL_RECORD[index_record_i + pointer_i][1], HISTORICAL_RECORD[index_record_i + pointer_i][2][deg_dex_i], HISTORICAL_RECORD[index_record_f + pointer_f][1], HISTORICAL_RECORD[index_record_f + pointer_f][2]))
+                    fileout.write(str([pointer_i, pointer_f]))
                 else:
                     do_transition_if_annihalation[pointer_i-1,pointer_f-1] = 0 
 
@@ -693,30 +692,30 @@ def buildOneSubTransitionMatrices(percent_vote_i, percent_vote_f, do_transition_
 
     if DO_DISPLAY_DATA:
         fileout.write('FINAL percent_vote_i = ')
-        fileout.write(np.matrix.round(percent_vote_i*1000)/1000)
+        fileout.write(str(np.matrix.round(percent_vote_i*1000)/1000))
         fileout.write('percent_vote_f = ')
-        fileout.write(np.matrix.round(percent_vote_f*1000)/1000)
+        fileout.write(str(np.matrix.round(percent_vote_f*1000)/1000))
         fileout.write('do_transition_if = ')
-        fileout.write(np.matrix.round(do_transition_if*1000)/1000)
+        fileout.write(str(np.matrix.round(do_transition_if*1000)/1000))
         
         fileout.write('sum_prob')
-        fileout.write(np.matrix.round(sum_prob*1000)/1000)
+        fileout.write(str(np.matrix.round(sum_prob*1000)/1000))
         fileout.write('diag_percent_vote_i = ')
-        fileout.write(np.matrix.round(diag_percent_vote_i*1000)/1000)
+        fileout.write(str(np.matrix.round(diag_percent_vote_i*1000)/1000))
         fileout.write('diag_percent_vote_f = ')
-        fileout.write(np.matrix.round(diag_percent_vote_f*1000)/1000)
+        fileout.write(str(np.matrix.round(diag_percent_vote_f*1000)/1000))
         fileout.write('diag_reciprocal_sum_prob = ')
-        fileout.write(np.matrix.round(diag_reciprocal_sum_prob*1000)/1000)
+        fileout.write(str(np.matrix.round(diag_reciprocal_sum_prob*1000)/1000))
         fileout.write('product_i =')
-        fileout.write(np.matrix.round(product_i*1000)/1000)
+        fileout.write(str(np.matrix.round(product_i*1000)/1000))
         fileout.write('product_f =')
-        fileout.write(np.matrix.round(product_f*1000)/1000)
+        fileout.write(str(np.matrix.round(product_f*1000)/1000))
         fileout.write('product_reciprocal_sum =')
-        fileout.write(np.matrix.round(product_reciprocal_sum*1000)/1000)
+        fileout.write(str(np.matrix.round(product_reciprocal_sum*1000)/1000))
         fileout.write('transition_matrix=')
-        fileout.write(np.matrix.round(transition_matrix*1000)/1000)
+        fileout.write(str(np.matrix.round(transition_matrix*1000)/1000))
         fileout.write('sum sum transition_matrix =')
-        fileout.write(sum_transition_matrix)
+        fileout.write(str(sum_transition_matrix))
 
     return transition_matrix
 
@@ -750,11 +749,11 @@ def buildThreeSubTransitionMatrices(percent_vote_i, percent_vote_f, do_transitio
     product_reciprocal_sum_generation = np.dot(diag_reciprocal_sum_prob_generation, do_transition_if_generation)
     if 0 == 1:
         fileout.write('generation factor 1 generation =')
-        fileout.write(np.matrix.round(product_i_generation*1000)/1000)
+        fileout.write(str(np.matrix.round(product_i_generation*1000)/1000))
         fileout.write('generation factor 2 generation =')
-        fileout.write(np.matrix.round(product_f_generation*1000)/1000)
+        fileout.write(str(np.matrix.round(product_f_generation*1000)/1000))
         fileout.write('generation  factor 3 generation =')
-        fileout.write(np.matrix.round(product_reciprocal_sum_generation*1000)/1000)
+        fileout.write(str(np.matrix.round(product_reciprocal_sum_generation*1000)/1000))
     #fileout.write('transition_matrix_generation =')
     transition_matrix_generation = do_transition_if_generation*product_f_generation
     #fileout.write(np.matrix.round(transition_matrix_generation*1000)/1000)
@@ -779,11 +778,11 @@ def buildThreeSubTransitionMatrices(percent_vote_i, percent_vote_f, do_transitio
     product_reciprocal_sum_continuation = np.dot(diag_reciprocal_sum_prob_continuation, do_transition_if_continuation)
     if 0 == 1:
         fileout.write('continuation factor 1 =')
-        fileout.write(np.matrix.round(product_i_continuation*1000)/1000)
+        fileout.write(str(np.matrix.round(product_i_continuation*1000)/1000))
         fileout.write('continuation factor 2 =')
-        fileout.write(np.matrix.round(product_f_continuation*1000)/1000)
+        fileout.write(str(np.matrix.round(product_f_continuation*1000)/1000))
         fileout.write('continuation factor 3 =')
-        fileout.write(np.matrix.round(product_reciprocal_sum_continuation*1000)/1000)
+        fileout.write(str(np.matrix.round(product_reciprocal_sum_continuation*1000)/1000))
     transition_matrix_continuation = (product_i_continuation*product_f_continuation)*product_reciprocal_sum_continuation
     #fileout.write(' transition_matrix_continuation =')
     #fileout.write(np.matrix.round(transition_matrix_continuation*1000)/1000)
