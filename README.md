@@ -1,5 +1,14 @@
 # Use of density matrices to study observations of the U.S. House of Representatives 
 
+Bonjour, Density Matrices.
+In this project, a python script was created to study the observations of previous
+U.S. House of Representative election parties and make predictions on (1) the 
+probability of that a party that was in the majority before an election would become 
+a minority party afterward (and vice versa) and (2) the probability
+that a party that was not represented in the U.S. House of Representatives
+before an election would have representation there afterward.
+
+
 ## Abstract
 A density matrix is a matrix that describes the statistical state of a system.
 Traditionally in physics, the density matrix is applied when dealing with mixed
@@ -17,4 +26,21 @@ tion would become a minority party afterward (and vice versa); the probability
 that a party that was not represented in the U.S. House of Representatives
 before an election would have representation there afterward.
 
+## Getting Started
+
+#### Git clone
+Through command prompt (Windows) or terminal (Mac), navigate to the folder you want to hold the project folder.
+Once there git clone using either the ssh or http method
+<b>SSH method</b>
+`git clone git@github.com:theFlawlessHack/bulls-cows-cpp-console-game.git`
+<b>HTTP method</b>
+`git clone https://github.com/theFlawlessHack/bulls-cows-cpp-console-game.git`
+
+#### Run Python Script
+Through command prompt (Windows) or terminal (Mac), navigate to the project folder which you just cloned.
+Once there, run the run.py file using python
+<br>
+type
+`python run.py` 
+in your terminal or command line in the project folder.
 
