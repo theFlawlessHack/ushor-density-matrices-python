@@ -1,3 +1,4 @@
 import histogram
 
-histogram.z(1)
+def run():
+	histogram.z(1)
